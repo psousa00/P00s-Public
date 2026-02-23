@@ -38,19 +38,16 @@
 body{
     background:linear-gradient(135deg,var(--bg),#0f172a);
     color:var(--text);
-    padding:4rem 6rem;
+    padding:5rem 8rem;
     transition:.3s ease;
 }
-
-/* HEADER */
 
 .header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:3rem;
+    margin-bottom:4rem;
     flex-wrap:wrap;
-    gap:1rem;
 }
 
 .title-group{
@@ -60,17 +57,17 @@ body{
 }
 
 h1{
-    font-size:clamp(1.8rem,4vw,2.6rem);
+    font-size:clamp(2rem,3vw,3rem);
     font-weight:700;
 }
 
 .subtitle{
     color:var(--sub);
-    font-size:.95rem;
+    font-size:1rem;
 }
 
 button{
-    padding:.6rem 1.2rem;
+    padding:.7rem 1.4rem;
     border-radius:50px;
     border:1px solid var(--border);
     background:var(--surface);
@@ -79,34 +76,16 @@ button{
     font-weight:600;
 }
 
-/* GRIDS */
-
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:2rem;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:2.5rem;
 }
-
-.training-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:2rem;
-    margin-top:2rem;
-}
-
-.shopping-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:1.5rem;
-    margin-top:1.5rem;
-}
-
-/* CARDS */
 
 .card, .shopping, .summary{
     background:var(--card);
-    padding:2rem;
-    border-radius:18px;
+    padding:2.5rem;
+    border-radius:20px;
     border:1px solid var(--border);
 }
 
@@ -116,9 +95,9 @@ button{
 }
 
 .macros{
-    font-size:.85rem;
+    font-size:.9rem;
     color:var(--sub);
-    margin-bottom:1.2rem;
+    margin-bottom:1.4rem;
 }
 
 ul{
@@ -126,7 +105,7 @@ ul{
 }
 
 ul li{
-    padding:.55rem 0;
+    padding:.6rem 0;
     border-bottom:1px solid var(--border);
     display:flex;
     align-items:center;
@@ -137,17 +116,17 @@ ul li:last-child{
     border-bottom:none;
 }
 
-/* CHECK */
-
+/* RISCAR EXERCÍCIO */
 .checked {
     text-decoration: line-through;
     opacity: 0.6;
     transition: .3s ease;
 }
 
+/* BOTÃO LIMPAR */
 .clear-btn {
-    margin-top: 1.2rem;
-    padding: .6rem 1.2rem;
+    margin-top: 1.5rem;
+    padding: .7rem 1.4rem;
     border-radius: 50px;
     border: 1px solid var(--border);
     background: var(--surface);
@@ -156,17 +135,39 @@ ul li:last-child{
     font-weight: 600;
 }
 
-/* TABLE */
+/* GRID DO TREINO */
+.training-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.section{
+    margin-top:5rem;
+}
+
+.shopping-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:2rem;
+    margin-top:1.5rem;
+}
+
+.note{
+    margin-top:2rem;
+    font-size:.9rem;
+    color:var(--sub);
+}
 
 table{
     width:100%;
     border-collapse:collapse;
-    margin-top:1.2rem;
-    font-size:.9rem;
+    margin-top:1.5rem;
 }
 
 th, td{
-    padding:.8rem;
+    padding:1rem;
     text-align:center;
     border-bottom:1px solid var(--border);
 }
@@ -176,61 +177,10 @@ th{
     font-weight:600;
 }
 
-/* RESPONSIVO */
-
-@media (max-width:1024px){
+@media (max-width:1100px){
     body{
         padding:3rem 2rem;
     }
-}
-
-@media (max-width:768px){
-
-    body{
-        padding:2rem 1.2rem;
-    }
-
-    h1{
-        font-size:1.6rem;
-    }
-
-    .card, .shopping, .summary{
-        padding:1.5rem;
-        border-radius:16px;
-    }
-
-    button{
-        width:100%;
-        text-align:center;
-    }
-
-    .header{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    table{
-        font-size:.8rem;
-    }
-
-}
-
-@media (max-width:420px){
-
-    body{
-        padding:1.5rem 1rem;
-    }
-
-    .grid,
-    .training-grid,
-    .shopping-grid{
-        grid-template-columns:1fr;
-    }
-
-    h1{
-        font-size:1.4rem;
-    }
-
 }
 
 @media print{
@@ -257,8 +207,9 @@ th{
 </div>
 
 <div class="grid">
+
 <div class="card">
-<h2>Refeição 1 — 08:10</h2>
+<h2>Refeição 1 — 08:10 (Café da Manhã)</h2>
 <div class="macros">330–360 kcal | P: 23g | C: 45g | G: 10–12g</div>
 <ul>
 <li>Pão francês – 1 unidade</li>
@@ -270,44 +221,228 @@ th{
 </div>
 
 <div class="card">
-<h2>Refeição 2 — 12:30</h2>
+<h2>Refeição 2 — 12:30 (Almoço)</h2>
 <div class="macros">470 kcal | P: 36g | C: 52g | G: 14g</div>
 <ul>
-<li>Arroz branco – 150g</li>
-<li>Frango – 120g</li>
-<li>Salada + tomate</li>
-<li>Palmito – 50g</li>
-<li>Azeite – 1 colher</li>
+<li>Arroz branco cozido – 150g</li>
+<li>Frango grelhado/desfiado – 120g</li>
+<li>Salada de folhas + tomate – 1 prato</li>
+<li>Palmito – 50g (enxaguado)</li>
+<li>Azeite – 1 colher de sopa</li>
 </ul>
 </div>
+
+<div class="card">
+<h2>Refeição 3 — 16:00 (Café da Tarde)</h2>
+<div class="macros">330–350 kcal | P: 17g | C: 50g | G: 6g</div>
+<ul>
+<li>Iogurte natural proteico – 170g</li>
+<li>Banana – ½ unidade</li>
+<li>Morango – 4 a 5 unidades</li>
+<li>Granola – 1 colher de sopa rasa (10g)</li>
+<li>Maçã – 1 unidade (para comer às 19h na faculdade)</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Refeição 4 — 21:00 (Jantar)</h2>
+<div class="macros">300 kcal | P: 26g | C: 20g | G: 15g</div>
+<ul>
+<li>Carne vermelha grelhada – 100g</li>
+<li>Batata inglesa cozida – 100g</li>
+<li>Salada à vontade (folhas + legumes)</li>
+<li>Vinagre e limão para temperar</li>
+</ul>
+</div>
+
+</div>
+
+<div class="shopping section">
+<h2>🛒 Lista de Compras Organizada</h2>
+
+<div class="shopping-grid">
+
+<div>
+<h3>🗓️ Compra Mensal</h3>
+<ul>
+<li>Arroz branco</li>
+<li>Granola</li>
+<li>Creatina</li>
+<li>Azeite</li>
+<li>Vinagre</li>
+<li>Sal</li>
+<li>Temperos secos</li>
+<li>Palmito (em conserva)</li>
+</ul>
+</div>
+
+<div>
+<h3>🗓️ Compra Semanal</h3>
+<ul>
+<li>Ovos</li>
+<li>Frango</li>
+<li>Carne vermelha</li>
+<li>Batata inglesa</li>
+<li>Pão francês (pode congelar parte)</li>
+<li>Iogurte natural proteico</li>
+<li>Creme de ricota light</li>
+</ul>
+</div>
+
+<div>
+<h3>🗓️ 2x por Semana</h3>
+<ul>
+<li>Banana</li>
+<li>Maçã</li>
+<li>Morango</li>
+<li>Folhas (alface, rúcula etc.)</li>
+<li>Tomate</li>
+<li>Limão</li>
+</ul>
+</div>
+
+</div>
+
+<div class="note">
+Frutas e folhas estragam mais rápido, então o ideal é reposição frequente.
+</div>
+
 </div>
 
 <div class="summary section">
-<h2>🏋️‍♀️ Planilha de Treino</h2>
+<h2>Total Diário de Macros</h2>
+
+<table>
+<tr>
+<th>Calorias</th>
+<th>Proteínas</th>
+<th>Carboidratos</th>
+<th>Gorduras</th>
+</tr>
+<tr>
+<td>~1455 kcal</td>
+<td>102g</td>
+<td>167g</td>
+<td>46g</td>
+</tr>
+</table>
+
+</div>
+
+<!-- ========================= -->
+<!--      PLANILHA DE TREINO   -->
+<!-- ========================= -->
+
+<div class="summary section">
+<h2>🏋️‍♀️ Planilha de Treino (Atualizada)</h2>
 
 <button class="clear-btn" onclick="clearAll()">Limpar tudo</button>
 
 <div class="training-grid">
 
+<!-- SEGUNDA -->
 <div class="card">
-<h3>SEGUNDA</h3>
+<h3>📅 SEGUNDA-FEIRA — 6:00</h3>
+<p class="macros">Glúteo Isolado</p>
 <ul>
+<li><input type="checkbox"> Aquecimento: Mobilidade</li>
+<li><input type="checkbox"> Ativação com miniband</li>
+<li><input type="checkbox"> Abdutora – 3x10</li>
 <li><input type="checkbox"> Elevação pélvica – 3x12</li>
-<li><input type="checkbox"> Terra sumô – 3x12</li>
+<li><input type="checkbox"> Levantamento terra sumô – 3x12</li>
+<li><input type="checkbox"> Glúteo na polia – 3x12</li>
 <li><input type="checkbox"> Afundo – 3x15</li>
+<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
+<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
 </ul>
 </div>
 
+<!-- TERÇA -->
 <div class="card">
-<h3>TERÇA</h3>
+<h3>📅 TERÇA-FEIRA — 6:00</h3>
+<p class="macros">Dorsal, Tríceps e Bíceps</p>
 <ul>
-<li><input type="checkbox"> Pulley frente – 3x12</li>
-<li><input type="checkbox"> Remada baixa – 3x12</li>
-<li><input type="checkbox"> Bíceps martelo – 3x12</li>
+<li><input type="checkbox"> Pulley frente + Rosca bíceps – 3x12</li>
+<li><input type="checkbox"> Remada baixa + Pulldown – 3x12</li>
+<li><input type="checkbox"> Remada curvada + Bíceps martelo – 3x12</li>
+<li><input type="checkbox"> Tríceps corda + Tríceps testa – 3x12</li>
+<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
+<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
 </ul>
 </div>
 
+<!-- QUARTA -->
+<div class="card">
+<h3>📅 QUARTA-FEIRA</h3>
+<p class="macros">Day Off</p>
+<ul>
+<li><input type="checkbox"> Descanso total</li>
+<li><input type="checkbox"> Alongamento leve</li>
+<li><input type="checkbox"> Mobilidade</li>
+<li><input type="checkbox"> Caminhada leve</li>
+</ul>
 </div>
+
+<!-- QUINTA -->
+<div class="card">
+<h3>📅 QUINTA-FEIRA — 6:00</h3>
+<p class="macros">Quadríceps e Posteriores</p>
+<ul>
+<li><input type="checkbox"> Cadeira extensora – 4x (12/10/9/8)</li>
+<li><input type="checkbox"> Agachamento no Smith – 3x12</li>
+<li><input type="checkbox"> Leg horizontal + Sumô com barra – 3x12</li>
+<li><input type="checkbox"> Extensora unilateral – 3x12</li>
+<li><input type="checkbox"> Flexora deitada + Stiff – 3x15</li>
+<li><input type="checkbox"> Flexora sentada – 10x10</li>
+<li><input type="checkbox"> Adutora – 4x12</li>
+</ul>
+</div>
+
+<!-- SEXTA -->
+<div class="card">
+<h3>📅 SEXTA-FEIRA — 17:00</h3>
+<p class="macros">Costas e Ombros</p>
+<ul>
+<li><input type="checkbox"> Pulley frente + Remada baixa – 4x12</li>
+<li><input type="checkbox"> Manguito rotador – 2x15</li>
+<li><input type="checkbox"> Desenvolvimento + Elevação lateral – 3x12</li>
+<li><input type="checkbox"> Elevação frontal + Remada baixa – 3x12</li>
+<li><input type="checkbox"> Elevação unilateral polia – 3x12</li>
+<li><input type="checkbox"> Voador invertido + Flexão solo – 3x12</li>
+<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
+<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
+</ul>
+</div>
+
+<!-- SÁBADO -->
+<div class="card">
+<h3>📅 SÁBADO — 10:00</h3>
+<p class="macros">Quadríceps e Glúteo</p>
+<ul>
+<li><input type="checkbox"> Aquecimento: Mobilidade</li>
+<li><input type="checkbox"> Ativação miniband</li>
+<li><input type="checkbox"> Extensora – 3x (12/10/9)</li>
+<li><input type="checkbox"> Agachamento Smith – 3x12</li>
+<li><input type="checkbox"> Leg horizontal + Sumô barra – 3x12</li>
+<li><input type="checkbox"> Abdutora articulada – 3x12</li>
+<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
+<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
+</ul>
+</div>
+
+<!-- DOMINGO -->
+<div class="card">
+<h3>📅 DOMINGO</h3>
+<p class="macros">Day Off</p>
+<ul>
+<li><input type="checkbox"> Descanso completo</li>
+<li><input type="checkbox"> Mobilidade</li>
+<li><input type="checkbox"> Liberação miofascial</li>
+<li><input type="checkbox"> Caminhada leve</li>
+</ul>
+</div>
+
+</div> <!-- fim do training-grid -->
 </div>
 
 <script>
@@ -315,8 +450,11 @@ function toggleTheme(){
     document.body.classList.toggle("light");
 }
 
+/* ===== SALVAMENTO AUTOMÁTICO ===== */
+
 document.addEventListener("DOMContentLoaded", () => {
     const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
     checkboxes.forEach((cb, index) => {
         const saved = localStorage.getItem("cb_" + index);
         if (saved === "true") {
@@ -330,6 +468,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+/* ===== LIMPAR TUDO ===== */
 
 function clearAll() {
     const checkboxes = document.querySelectorAll("input[type='checkbox']");
