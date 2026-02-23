@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -108,10 +107,40 @@ ul{
 ul li{
     padding:.6rem 0;
     border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    gap:.6rem;
 }
 
 ul li:last-child{
     border-bottom:none;
+}
+
+/* RISCAR EXERCÍCIO */
+.checked {
+    text-decoration: line-through;
+    opacity: 0.6;
+    transition: .3s ease;
+}
+
+/* BOTÃO LIMPAR */
+.clear-btn {
+    margin-top: 1.5rem;
+    padding: .7rem 1.4rem;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* GRID DO TREINO */
+.training-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
 }
 
 .section{
@@ -300,9 +329,155 @@ Frutas e folhas estragam mais rápido, então o ideal é reposição frequente.
 
 </div>
 
+<!-- ========================= -->
+<!--      PLANILHA DE TREINO   -->
+<!-- ========================= -->
+
+<div class="summary section">
+<h2>🏋️‍♀️ Planilha de Treino (Atualizada)</h2>
+
+<button class="clear-btn" onclick="clearAll()">Limpar tudo</button>
+
+<div class="training-grid">
+
+<!-- SEGUNDA -->
+<div class="card">
+<h3>📅 SEGUNDA-FEIRA — 6:00</h3>
+<p class="macros">Glúteo Isolado</p>
+<ul>
+<li><input type="checkbox"> Aquecimento: Mobilidade</li>
+<li><input type="checkbox"> Ativação com miniband</li>
+<li><input type="checkbox"> Abdutora – 3x10</li>
+<li><input type="checkbox"> Elevação pélvica – 3x12</li>
+<li><input type="checkbox"> Levantamento terra sumô – 3x12</li>
+<li><input type="checkbox"> Glúteo na polia – 3x12</li>
+<li><input type="checkbox"> Afundo – 3x15</li>
+<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
+<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
+</ul>
+</div>
+
+<!-- TERÇA -->
+<div class="card">
+<h3>📅 TERÇA-FEIRA — 6:00</h3>
+<p class="macros">Dorsal, Tríceps e Bíceps</p>
+<ul>
+<li><input type="checkbox"> Pulley frente + Rosca bíceps – 3x12</li>
+<li><input type="checkbox"> Remada baixa + Pulldown – 3x12</li>
+<li><input type="checkbox"> Remada curvada + Bíceps martelo – 3x12</li>
+<li><input type="checkbox"> Tríceps corda + Tríceps testa – 3x12</li>
+<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
+<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
+</ul>
+</div>
+
+<!-- QUARTA -->
+<div class="card">
+<h3>📅 QUARTA-FEIRA</h3>
+<p class="macros">Day Off</p>
+<ul>
+<li><input type="checkbox"> Descanso total</li>
+<li><input type="checkbox"> Alongamento leve</li>
+<li><input type="checkbox"> Mobilidade</li>
+<li><input type="checkbox"> Caminhada leve</li>
+</ul>
+</div>
+
+<!-- QUINTA -->
+<div class="card">
+<h3>📅 QUINTA-FEIRA — 6:00</h3>
+<p class="macros">Quadríceps e Posteriores</p>
+<ul>
+<li><input type="checkbox"> Cadeira extensora – 4x (12/10/9/8)</li>
+<li><input type="checkbox"> Agachamento no Smith – 3x12</li>
+<li><input type="checkbox"> Leg horizontal + Sumô com barra – 3x12</li>
+<li><input type="checkbox"> Extensora unilateral – 3x12</li>
+<li><input type="checkbox"> Flexora deitada + Stiff – 3x15</li>
+<li><input type="checkbox"> Flexora sentada – 10x10</li>
+<li><input type="checkbox"> Adutora – 4x12</li>
+</ul>
+</div>
+
+<!-- SEXTA -->
+<div class="card">
+<h3>📅 SEXTA-FEIRA — 17:00</h3>
+<p class="macros">Costas e Ombros</p>
+<ul>
+<li><input type="checkbox"> Pulley frente + Remada baixa – 4x12</li>
+<li><input type="checkbox"> Manguito rotador – 2x15</li>
+<li><input type="checkbox"> Desenvolvimento + Elevação lateral – 3x12</li>
+<li><input type="checkbox"> Elevação frontal + Remada baixa – 3x12</li>
+<li><input type="checkbox"> Elevação unilateral polia – 3x12</li>
+<li><input type="checkbox"> Voador invertido + Flexão solo – 3x12</li>
+<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
+<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
+</ul>
+</div>
+
+<!-- SÁBADO -->
+<div class="card">
+<h3>📅 SÁBADO — 10:00</h3>
+<p class="macros">Quadríceps e Glúteo</p>
+<ul>
+<li><input type="checkbox"> Aquecimento: Mobilidade</li>
+<li><input type="checkbox"> Ativação miniband</li>
+<li><input type="checkbox"> Extensora – 3x (12/10/9)</li>
+<li><input type="checkbox"> Agachamento Smith – 3x12</li>
+<li><input type="checkbox"> Leg horizontal + Sumô barra – 3x12</li>
+<li><input type="checkbox"> Abdutora articulada – 3x12</li>
+<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
+<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
+</ul>
+</div>
+
+<!-- DOMINGO -->
+<div class="card">
+<h3>📅 DOMINGO</h3>
+<p class="macros">Day Off</p>
+<ul>
+<li><input type="checkbox"> Descanso completo</li>
+<li><input type="checkbox"> Mobilidade</li>
+<li><input type="checkbox"> Liberação miofascial</li>
+<li><input type="checkbox"> Caminhada leve</li>
+</ul>
+</div>
+
+</div> <!-- fim do training-grid -->
+</div>
+
 <script>
 function toggleTheme(){
     document.body.classList.toggle("light");
+}
+
+/* ===== SALVAMENTO AUTOMÁTICO ===== */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+    checkboxes.forEach((cb, index) => {
+        const saved = localStorage.getItem("cb_" + index);
+        if (saved === "true") {
+            cb.checked = true;
+            cb.parentElement.classList.add("checked");
+        }
+
+        cb.addEventListener("change", () => {
+            localStorage.setItem("cb_" + index, cb.checked);
+            cb.parentElement.classList.toggle("checked", cb.checked);
+        });
+    });
+});
+
+/* ===== LIMPAR TUDO ===== */
+
+function clearAll() {
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+    checkboxes.forEach((cb, index) => {
+        cb.checked = false;
+        cb.parentElement.classList.remove("checked");
+        localStorage.removeItem("cb_" + index);
+    });
 }
 </script>
 
