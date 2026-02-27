@@ -1,485 +1,1412 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plano Nutricional – Lorraine</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
-    --bg:#0b1220;
-    --surface:#111827;
-    --card:#172033;
-    --accent:#3b82f6;
-    --text:#e5e7eb;
-    --sub:#9ca3af;
-    --border:#1f2937;
-}
-
-.light{
-    --bg:#f4f6f9;
-    --surface:#ffffff;
-    --card:#ffffff;
-    --accent:#1d4ed8;
-    --text:#111827;
-    --sub:#6b7280;
-    --border:#e5e7eb;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-}
-
-body{
-    background:linear-gradient(135deg,var(--bg),#0f172a);
-    color:var(--text);
-    padding:5rem 8rem;
-    transition:.3s ease;
-}
-
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:4rem;
-    flex-wrap:wrap;
-}
-
-.title-group{
-    display:flex;
-    flex-direction:column;
-    gap:.5rem;
-}
-
-h1{
-    font-size:clamp(2rem,3vw,3rem);
-    font-weight:700;
-}
-
-.subtitle{
-    color:var(--sub);
-    font-size:1rem;
-}
-
-button{
-    padding:.7rem 1.4rem;
-    border-radius:50px;
-    border:1px solid var(--border);
-    background:var(--surface);
-    color:var(--text);
-    cursor:pointer;
-    font-weight:600;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-    gap:2.5rem;
-}
-
-.card, .shopping, .summary{
-    background:var(--card);
-    padding:2.5rem;
-    border-radius:20px;
-    border:1px solid var(--border);
-}
-
-.card h2, .shopping h2, .summary h2{
-    color:var(--accent);
-    margin-bottom:.8rem;
-}
-
-.macros{
-    font-size:.9rem;
-    color:var(--sub);
-    margin-bottom:1.4rem;
-}
-
-ul{
-    list-style:none;
-}
-
-ul li{
-    padding:.6rem 0;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    gap:.6rem;
-}
-
-ul li:last-child{
-    border-bottom:none;
-}
-
-/* RISCAR EXERCÍCIO */
-.checked {
-    text-decoration: line-through;
-    opacity: 0.6;
-    transition: .3s ease;
-}
-
-/* BOTÃO LIMPAR */
-.clear-btn {
-    margin-top: 1.5rem;
-    padding: .7rem 1.4rem;
-    border-radius: 50px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-    cursor: pointer;
-    font-weight: 600;
-}
-
-/* GRID DO TREINO */
-.training-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2.5rem;
-    margin-top: 2rem;
-}
-
-.section{
-    margin-top:5rem;
-}
-
-.shopping-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:2rem;
-    margin-top:1.5rem;
-}
-
-.note{
-    margin-top:2rem;
-    font-size:.9rem;
-    color:var(--sub);
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:1.5rem;
-}
-
-th, td{
-    padding:1rem;
-    text-align:center;
-    border-bottom:1px solid var(--border);
-}
-
-th{
-    color:var(--accent);
-    font-weight:600;
-}
-
-@media (max-width:1100px){
-    body{
-        padding:3rem 2rem;
-    }
-}
-
-@media print{
-    button{
-        display:none;
-    }
-    body{
-        background:white;
-        color:black;
-        padding:2rem;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="header">
-    <div class="title-group">
-        <h1>Plano Nutricional – Lorraine</h1>
-        <div class="subtitle">Estrutura nutricional estratégica para performance diária</div>
-    </div>
-    <button onclick="toggleTheme()">Alternar Tema</button>
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h2>Refeição 1 — 08:10 (Café da Manhã)</h2>
-<div class="macros">330–360 kcal | P: 23g | C: 45g | G: 10–12g</div>
-<ul>
-<li>Pão francês – 1 unidade</li>
-<li>Creme de Ricota Light</li>
-<li>Ovos mexidos – 2 unidades</li>
-<li>Banana – 1 unidade</li>
-<li>Creatina – 5g</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>Refeição 2 — 12:30 (Almoço)</h2>
-<div class="macros">470 kcal | P: 36g | C: 52g | G: 14g</div>
-<ul>
-<li>Arroz branco cozido – 150g</li>
-<li>Frango grelhado/desfiado – 120g</li>
-<li>Salada de folhas + tomate – 1 prato</li>
-<li>Palmito – 50g (enxaguado)</li>
-<li>Azeite – 1 colher de sopa</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>Refeição 3 — 16:00 (Café da Tarde)</h2>
-<div class="macros">330–350 kcal | P: 17g | C: 50g | G: 6g</div>
-<ul>
-<li>Iogurte natural proteico – 170g</li>
-<li>Banana – ½ unidade</li>
-<li>Morango – 4 a 5 unidades</li>
-<li>Granola – 1 colher de sopa rasa (10g)</li>
-<li>Maçã – 1 unidade (para comer às 19h na faculdade)</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>Refeição 4 — 21:00 (Jantar)</h2>
-<div class="macros">300 kcal | P: 26g | C: 20g | G: 15g</div>
-<ul>
-<li>Carne vermelha grelhada – 100g</li>
-<li>Batata inglesa cozida – 100g</li>
-<li>Salada à vontade (folhas + legumes)</li>
-<li>Vinagre e limão para temperar</li>
-</ul>
-</div>
-
-</div>
-
-<div class="shopping section">
-<h2>🛒 Lista de Compras Organizada</h2>
-
-<div class="shopping-grid">
-
-<div>
-<h3>🗓️ Compra Mensal</h3>
-<ul>
-<li>Arroz branco</li>
-<li>Granola</li>
-<li>Creatina</li>
-<li>Azeite</li>
-<li>Vinagre</li>
-<li>Sal</li>
-<li>Temperos secos</li>
-<li>Palmito (em conserva)</li>
-</ul>
-</div>
-
-<div>
-<h3>🗓️ Compra Semanal</h3>
-<ul>
-<li>Ovos</li>
-<li>Frango</li>
-<li>Carne vermelha</li>
-<li>Batata inglesa</li>
-<li>Pão francês (pode congelar parte)</li>
-<li>Iogurte natural proteico</li>
-<li>Creme de ricota light</li>
-</ul>
-</div>
-
-<div>
-<h3>🗓️ 2x por Semana</h3>
-<ul>
-<li>Banana</li>
-<li>Maçã</li>
-<li>Morango</li>
-<li>Folhas (alface, rúcula etc.)</li>
-<li>Tomate</li>
-<li>Limão</li>
-</ul>
-</div>
-
-</div>
-
-<div class="note">
-Frutas e folhas estragam mais rápido, então o ideal é reposição frequente.
-</div>
-
-</div>
-
-<div class="summary section">
-<h2>Total Diário de Macros</h2>
-
-<table>
-<tr>
-<th>Calorias</th>
-<th>Proteínas</th>
-<th>Carboidratos</th>
-<th>Gorduras</th>
-</tr>
-<tr>
-<td>~1455 kcal</td>
-<td>102g</td>
-<td>167g</td>
-<td>46g</td>
-</tr>
-</table>
-
-</div>
-
-<!-- ========================= -->
-<!--      PLANILHA DE TREINO   -->
-<!-- ========================= -->
-
-<div class="summary section">
-<h2>🏋️‍♀️ Planilha de Treino (Atualizada)</h2>
-
-<button class="clear-btn" onclick="clearAll()">Limpar tudo</button>
-
-<div class="training-grid">
-
-<!-- SEGUNDA -->
-<div class="card">
-<h3>📅 SEGUNDA-FEIRA — 6:00</h3>
-<p class="macros">Glúteo Isolado</p>
-<ul>
-<li><input type="checkbox"> Aquecimento: Mobilidade</li>
-<li><input type="checkbox"> Ativação com miniband</li>
-<li><input type="checkbox"> Abdutora – 3x10</li>
-<li><input type="checkbox"> Elevação pélvica – 3x12</li>
-<li><input type="checkbox"> Levantamento terra sumô – 3x12</li>
-<li><input type="checkbox"> Glúteo na polia – 3x12</li>
-<li><input type="checkbox"> Afundo – 3x15</li>
-<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
-<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
-</ul>
-</div>
-
-<!-- TERÇA -->
-<div class="card">
-<h3>📅 TERÇA-FEIRA — 6:00</h3>
-<p class="macros">Dorsal, Tríceps e Bíceps</p>
-<ul>
-<li><input type="checkbox"> Pulley frente + Rosca bíceps – 3x12</li>
-<li><input type="checkbox"> Remada baixa + Pulldown – 3x12</li>
-<li><input type="checkbox"> Remada curvada + Bíceps martelo – 3x12</li>
-<li><input type="checkbox"> Tríceps corda + Tríceps testa – 3x12</li>
-<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
-<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
-</ul>
-</div>
-
-<!-- QUARTA -->
-<div class="card">
-<h3>📅 QUARTA-FEIRA</h3>
-<p class="macros">Day Off</p>
-<ul>
-<li><input type="checkbox"> Descanso total</li>
-<li><input type="checkbox"> Alongamento leve</li>
-<li><input type="checkbox"> Mobilidade</li>
-<li><input type="checkbox"> Caminhada leve</li>
-</ul>
-</div>
-
-<!-- QUINTA -->
-<div class="card">
-<h3>📅 QUINTA-FEIRA — 6:00</h3>
-<p class="macros">Quadríceps e Posteriores</p>
-<ul>
-<li><input type="checkbox"> Cadeira extensora – 4x (12/10/9/8)</li>
-<li><input type="checkbox"> Agachamento no Smith – 3x12</li>
-<li><input type="checkbox"> Leg horizontal + Sumô com barra – 3x12</li>
-<li><input type="checkbox"> Extensora unilateral – 3x12</li>
-<li><input type="checkbox"> Flexora deitada + Stiff – 3x15</li>
-<li><input type="checkbox"> Flexora sentada – 10x10</li>
-<li><input type="checkbox"> Adutora – 4x12</li>
-</ul>
-</div>
-
-<!-- SEXTA -->
-<div class="card">
-<h3>📅 SEXTA-FEIRA — 17:00</h3>
-<p class="macros">Costas e Ombros</p>
-<ul>
-<li><input type="checkbox"> Pulley frente + Remada baixa – 4x12</li>
-<li><input type="checkbox"> Manguito rotador – 2x15</li>
-<li><input type="checkbox"> Desenvolvimento + Elevação lateral – 3x12</li>
-<li><input type="checkbox"> Elevação frontal + Remada baixa – 3x12</li>
-<li><input type="checkbox"> Elevação unilateral polia – 3x12</li>
-<li><input type="checkbox"> Voador invertido + Flexão solo – 3x12</li>
-<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
-<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
-</ul>
-</div>
-
-<!-- SÁBADO -->
-<div class="card">
-<h3>📅 SÁBADO — 10:00</h3>
-<p class="macros">Quadríceps e Glúteo</p>
-<ul>
-<li><input type="checkbox"> Aquecimento: Mobilidade</li>
-<li><input type="checkbox"> Ativação miniband</li>
-<li><input type="checkbox"> Extensora – 3x (12/10/9)</li>
-<li><input type="checkbox"> Agachamento Smith – 3x12</li>
-<li><input type="checkbox"> Leg horizontal + Sumô barra – 3x12</li>
-<li><input type="checkbox"> Abdutora articulada – 3x12</li>
-<li><input type="checkbox"> Abdômen: Canivete – 4x12</li>
-<li><input type="checkbox"> Abdômen: Supra – 4x12</li>
-</ul>
-</div>
-
-<!-- DOMINGO -->
-<div class="card">
-<h3>📅 DOMINGO</h3>
-<p class="macros">Day Off</p>
-<ul>
-<li><input type="checkbox"> Descanso completo</li>
-<li><input type="checkbox"> Mobilidade</li>
-<li><input type="checkbox"> Liberação miofascial</li>
-<li><input type="checkbox"> Caminhada leve</li>
-</ul>
-</div>
-
-</div> <!-- fim do training-grid -->
-</div>
-
-<script>
-function toggleTheme(){
-    document.body.classList.toggle("light");
-}
-
-/* ===== SALVAMENTO AUTOMÁTICO ===== */
-
-document.addEventListener("DOMContentLoaded", () => {
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
-
-    checkboxes.forEach((cb, index) => {
-        const saved = localStorage.getItem("cb_" + index);
-        if (saved === "true") {
-            cb.checked = true;
-            cb.parentElement.classList.add("checked");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plácido M. Sousa - Rastreador de Treinos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        cb.addEventListener("change", () => {
-            localStorage.setItem("cb_" + index, cb.checked);
-            cb.parentElement.classList.toggle("checked", cb.checked);
-        });
-    });
-});
+        :root {
+            --primary: #2563eb;
+            --primary-light: #dbeafe;
+            --bg-light: #ffffff;
+            --bg-dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #e2e8f0;
+            --border-light: #e2e8f0;
+            --border-dark: #334155;
+            --card-light: #f8fafc;
+            --card-dark: #1e293b;
+            --muted-light: #64748b;
+            --muted-dark: #94a3b8;
+        }
 
-/* ===== LIMPAR TUDO ===== */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-function clearAll() {
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
-    checkboxes.forEach((cb, index) => {
-        cb.checked = false;
-        cb.parentElement.classList.remove("checked");
-        localStorage.removeItem("cb_" + index);
-    });
-}
-</script>
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-dark);
+        }
 
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        body.dark-mode header {
+            background-color: rgba(15, 23, 42, 0.95);
+            border-bottom-color: var(--border-dark);
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title h1 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .header-title p {
+            font-size: 0.75rem;
+            color: var(--muted-light);
+        }
+
+        body.dark-mode .header-title p {
+            color: var(--muted-dark);
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-light);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: all 0.3s;
+            min-width: 2.5rem;
+            height: 2.5rem;
+        }
+
+        body.dark-mode .theme-toggle {
+            border-color: var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--card-light);
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            background-color: var(--card-dark);
+        }
+
+        main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .week-selector {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .week-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 0.75rem;
+            border: 1px solid var(--border-light);
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .week-btn {
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        .week-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .week-btn:hover {
+            border-color: var(--primary);
+        }
+
+        .progress-card {
+            background-color: var(--primary-light);
+            border: 1px solid #93c5fd;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        body.dark-mode .progress-card {
+            background-color: rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .progress-header h2 {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .progress-header span {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .progress-bar {
+            height: 0.375rem;
+            background-color: #e0e7ff;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        body.dark-mode .progress-bar {
+            background-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.5s ease;
+        }
+
+        .day-header {
+            position: sticky;
+            top: 4rem;
+            z-index: 40;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-light);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        body.dark-mode .day-header {
+            background-color: rgba(30, 41, 59, 0.95);
+            border-color: var(--border-dark);
+        }
+
+        .day-info h3 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .day-info p {
+            font-size: 0.75rem;
+            color: var(--muted-light);
+        }
+
+        body.dark-mode .day-info p {
+            color: var(--muted-dark);
+        }
+
+        .day-progress {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: fit-content;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .day-progress-bar {
+            width: 6rem;
+            height: 0.375rem;
+            background-color: #e0e7ff;
+            border-radius: 9999px;
+            overflow: hidden;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        body.dark-mode .day-progress-bar {
+            background-color: rgba(37, 99, 235, 0.2);
+        }
+
+        .day-progress-fill {
+            height: 100%;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .day-progress-text {
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 2.5rem;
+        }
+
+        .muscle-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .muscle-group-title {
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: var(--primary);
+            padding: 0 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .exercise-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: all 0.3s;
+            flex-wrap: wrap;
+        }
+
+        body.dark-mode .exercise-card {
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+        }
+
+        .exercise-card.completed {
+            background-color: rgba(37, 99, 235, 0.05);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        body.dark-mode .exercise-card.completed {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .exercise-checkbox {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 2px solid var(--muted-light);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.25rem;
+            transition: all 0.3s;
+        }
+
+        body.dark-mode .exercise-checkbox {
+            border-color: var(--muted-dark);
+        }
+
+        .exercise-checkbox:hover {
+            border-color: var(--primary);
+        }
+
+        .exercise-checkbox.checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .exercise-info {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .exercise-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            transition: all 0.3s;
+        }
+
+        .exercise-card.completed .exercise-name {
+            text-decoration: line-through;
+            color: var(--muted-light);
+        }
+
+        body.dark-mode .exercise-card.completed .exercise-name {
+            color: var(--muted-dark);
+        }
+
+        .exercise-details {
+            font-size: 0.75rem;
+            color: var(--muted-light);
+            margin-bottom: 0.25rem;
+        }
+
+        body.dark-mode .exercise-details {
+            color: var(--muted-dark);
+        }
+
+        .exercise-notes {
+            font-size: 0.75rem;
+            color: var(--muted-light);
+            font-style: italic;
+        }
+
+        body.dark-mode .exercise-notes {
+            color: var(--muted-dark);
+        }
+
+        .timer-container {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timer-display {
+            width: 5rem;
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .timer-svg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .timer-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .timer-btn {
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid var(--border-light);
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            border-radius: 0.375rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 0.875rem;
+        }
+
+        body.dark-mode .timer-btn {
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+            color: var(--text-dark);
+        }
+
+        .timer-btn:hover {
+            background-color: var(--primary-light);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        body.dark-mode .timer-btn:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .timer-btn.playing {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--border-light);
+            margin: 1.5rem 0;
+        }
+
+        body.dark-mode .divider {
+            background-color: var(--border-dark);
+        }
+
+        .tips-card {
+            background-color: var(--card-light);
+            border: 1px solid var(--border-light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        body.dark-mode .tips-card {
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+        }
+
+        .tips-card h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-card ul {
+            list-style: none;
+            font-size: 0.75rem;
+            color: var(--muted-light);
+        }
+
+        body.dark-mode .tips-card ul {
+            color: var(--muted-dark);
+        }
+
+        .tips-card li {
+            margin-bottom: 0.25rem;
+        }
+
+        .rest-day {
+            background-color: var(--card-light);
+            border: 1px solid var(--border-light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            color: var(--muted-light);
+            font-size: 0.875rem;
+        }
+
+        body.dark-mode .rest-day {
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+            color: var(--muted-dark);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .clear-all-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+        }
+
+        .clear-all-btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        body.dark-mode .clear-all-btn {
+            background-color: var(--primary);
+        }
+
+        body.dark-mode .clear-all-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Responsividade melhorada */
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+            }
+
+            .header-content {
+                padding: 0.75rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-title h1 {
+                font-size: 1.125rem;
+            }
+
+            .header-controls {
+                align-self: flex-end;
+            }
+
+            .week-selector {
+                gap: 0.5rem;
+            }
+
+            .week-btn {
+                min-width: 100px;
+                padding: 0.65rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .exercise-card {
+                flex-direction: column;
+            }
+
+            .timer-container {
+                align-self: flex-end;
+            }
+
+            .day-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .day-progress {
+                width: 100%;
+                min-width: 100%;
+            }
+
+            .day-progress-bar {
+                flex: 1;
+                width: 100%;
+            }
+
+            .exercise-info {
+                min-width: 100%;
+            }
+
+            .timer-display {
+                width: 4rem;
+                height: 4rem;
+            }
+
+            .timer-text {
+                font-size: 1rem;
+            }
+
+            .timer-btn {
+                width: 1.75rem;
+                height: 1.75rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 0.75rem;
+            }
+
+            .header-content {
+                padding: 0.5rem;
+            }
+
+            .header-title h1 {
+                font-size: 1.125rem;
+            }
+
+            .header-title p {
+                font-size: 0.65rem;
+            }
+
+            .progress-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .week-selector {
+                gap: 0.4rem;
+            }
+
+            .week-btn {
+                min-width: 80px;
+                padding: 0.6rem 0.4rem;
+                font-size: 0.75rem;
+            }
+
+            .day-header {
+                padding: 0.75rem;
+            }
+
+            .day-info h3 {
+                font-size: 1rem;
+            }
+
+            .exercise-card {
+                padding: 0.75rem;
+                gap: 0.75rem;
+            }
+
+            .exercise-checkbox {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+
+            .exercise-name {
+                font-size: 0.8rem;
+            }
+
+            .exercise-details {
+                font-size: 0.7rem;
+            }
+
+            .timer-display {
+                width: 3.5rem;
+                height: 3.5rem;
+            }
+
+            .timer-text {
+                font-size: 0.9rem;
+            }
+
+            .timer-btn {
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: 0.65rem;
+            }
+
+            .clear-all-btn {
+                width: 100%;
+                padding: 0.65rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .tips-card {
+                padding: 0.75rem;
+            }
+
+            .tips-card ul {
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            main {
+                padding: 0.5rem;
+            }
+
+            .header-title h1 {
+                font-size: 1.125rem;
+            }
+
+            .week-btn {
+                min-width: 70px;
+                padding: 0.5rem 0.3rem;
+                font-size: 0.7rem;
+            }
+
+            .exercise-card {
+                padding: 0.6rem;
+                gap: 0.5rem;
+            }
+
+            .timer-display {
+                width: 3rem;
+                height: 3rem;
+            }
+
+            .timer-text {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-title">
+                <h1>Plácido M. Sousa</h1>
+                <p>Treino: Maio → Junho</p>
+            </div>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle" title="Alternar tema">
+                    <span id="themeIcon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="week-selector">
+            <button class="week-btn active" data-week="0">Semana A</button>
+            <button class="week-btn" data-week="1">Semana B</button>
+        </div>
+
+        <div class="progress-card">
+            <div class="progress-header">
+                <h2>Progresso da Semana</h2>
+                <span id="overallProgress">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallProgressBar" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <button class="clear-all-btn" id="clearAllBtn" title="Limpar todos os checkboxes">
+            🗑️ Limpar Todos
+        </button>
+
+        <div id="workoutContainer"></div>
+
+        <div class="tips-card">
+            <h3>💡 Dicas</h3>
+            <ul>
+                <li>✓ Clique no círculo para marcar exercício como concluído</li>
+                <li>✓ Use o cronômetro de 15min para controlar o tempo</li>
+                <li>✓ Seu progresso é salvo automaticamente</li>
+                <li>✓ Alterne entre modo claro e escuro conforme necessário</li>
+                <li>✓ Clique em "Limpar Todos" para resetar todos os checkboxes</li>
+                <li>✓ Todos os exercícios estão visíveis para fácil acesso</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        // Dados dos treinos atualizados
+        const workoutPlans = [
+            {
+                week: "Semana A (Seg > PAR)",
+                days: [
+                    {
+                        id: "week-a-seg",
+                        day: "Segunda-Feira",
+                        date: "Série A - Costa e Bíceps",
+                        muscleGroups: [
+                            {
+                                name: "Costas",
+                                exercises: [
+                                    { id: "a-seg-1", name: "Puxada pronada articulada", sets: "4", reps: "8–10", notes: "última série Clust Set" },
+                                    { id: "a-seg-2", name: "Puxada neutra com triângulo", sets: "4", reps: "8–10", notes: "última série Clust Set" },
+                                    { id: "a-seg-3", name: "Remada curvada pronada", sets: "4", reps: "8–10" },
+                                    { id: "a-seg-4", name: "Remada triângulo", sets: "4", reps: "8–10", notes: "última série Clust Set" },
+                                ]
+                            },
+                            {
+                                name: "Bíceps",
+                                exercises: [
+                                    { id: "a-seg-5", name: "Rosca Scott W", sets: "4", reps: "8–10", notes: "todas as séries Rest Pause 10s" },
+                                    { id: "a-seg-6", name: "Rosca martelo", sets: "4", reps: "8–10" },
+                                    { id: "a-seg-7", name: "Extensão de punho na barra", sets: "4", reps: "8–10" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-a-ter",
+                        day: "Terça-Feira",
+                        date: "Série B - Peito e Tríceps",
+                        muscleGroups: [
+                            {
+                                name: "Peito",
+                                exercises: [
+                                    { id: "a-ter-1", name: "Supino reto barra", sets: "4", reps: "8–10" },
+                                    { id: "a-ter-2", name: "Supino inclinado halteres", sets: "4", reps: "8–10" },
+                                    { id: "a-ter-3", name: "Crucifixo reto máquina", sets: "4", reps: "8–10" },
+                                    { id: "a-ter-4", name: "Crucifixo inclinado para cima pulley", sets: "4", reps: "8–10", notes: "última série 2 Rest" },
+                                ]
+                            },
+                            {
+                                name: "Tríceps",
+                                exercises: [
+                                    { id: "a-ter-5", name: "Tríceps paralela", sets: "4", reps: "8–10" },
+                                    { id: "a-ter-6", name: "Tríceps pulley corda", sets: "4", reps: "8–10" },
+                                    { id: "a-ter-7", name: "Tríceps pulley unilateral", sets: "4", reps: "8–10", notes: "última série Drop" },
+                                ]
+                            },
+                            {
+                                name: "Cardio",
+                                exercises: [
+                                    { id: "a-ter-8", name: "Cardio", sets: "1", reps: "15 minutos" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-a-qua",
+                        day: "Quarta-Feira",
+                        date: "Off",
+                        muscleGroups: [],
+                        isRestDay: true
+                    },
+                    {
+                        id: "week-a-qui",
+                        day: "Quinta-Feira",
+                        date: "Série C - Perna completo",
+                        muscleGroups: [
+                            {
+                                name: "Pernas",
+                                exercises: [
+                                    { id: "a-qui-1", name: "Agachamento livre", sets: "4", reps: "8–10" },
+                                    { id: "a-qui-2", name: "Leg 45", sets: "4", reps: "8–10" },
+                                    { id: "a-qui-3", name: "Cadeira extensora", sets: "4", reps: "8–10", notes: "última série: 2 Rest Pause de 10s" },
+                                    { id: "a-qui-4", name: "Afundo Smith", sets: "4", reps: "8–10" },
+                                    { id: "a-qui-5", name: "Mesa flexora", sets: "4", reps: "8–10" },
+                                    { id: "a-qui-6", name: "Stiff barra", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-a-sex",
+                        day: "Sexta-Feira",
+                        date: "Série D - Ombro + Tríceps",
+                        muscleGroups: [
+                            {
+                                name: "Tríceps",
+                                exercises: [
+                                    { id: "a-sex-1", name: "Tríceps pulley corda", sets: "3", reps: "8–10" },
+                                    { id: "a-sex-2", name: "Tríceps coice", sets: "3", reps: "8–10" },
+                                ]
+                            },
+                            {
+                                name: "Ombro",
+                                exercises: [
+                                    { id: "a-sex-3", name: "Desenvolvimento sentado rack", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                    { id: "a-sex-4", name: "Desenvolvimento Arnold", sets: "4", reps: "8–10" },
+                                    { id: "a-sex-5", name: "Elevação lateral halteres", sets: "4", reps: "8–10", notes: "última série: 2 Rest Pause de 10s" },
+                                    { id: "a-sex-6", name: "Crucifixo inverso polia", sets: "4", reps: "8–10" },
+                                    { id: "a-sex-7", name: "Encolhimento", sets: "4", reps: "8–10", notes: "se sobrar tempo" },
+                                ]
+                            },
+                            {
+                                name: "Cardio",
+                                exercises: [
+                                    { id: "a-sex-8", name: "Cardio", sets: "1", reps: "15 minutos" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-a-sab",
+                        day: "Sábado",
+                        date: "Série E1 - Costa e Bíceps",
+                        muscleGroups: [
+                            {
+                                name: "Aquecimento e Alongamento",
+                                exercises: [
+                                    { id: "a-sab-1", name: "Barra fixa", sets: "2", reps: "Falha" },
+                                    { id: "a-sab-2", name: "Alongamento geral", sets: "1", reps: "Completo" },
+                                ]
+                            },
+                            {
+                                name: "Costas",
+                                exercises: [
+                                    { id: "a-sab-3", name: "Puxada pronada articulada", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                    { id: "a-sab-4", name: "Puxada neutra com triângulo", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                    { id: "a-sab-5", name: "Remada curvada pronada", sets: "4", reps: "8–10" },
+                                    { id: "a-sab-6", name: "Remada triângulo", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                ]
+                            },
+                            {
+                                name: "Bíceps",
+                                exercises: [
+                                    { id: "a-sab-7", name: "Rosca Scott W", sets: "4", reps: "8–10", notes: "todas as séries: Rest Pause 10s" },
+                                    { id: "a-sab-8", name: "Rosca martelo", sets: "4", reps: "8–10" },
+                                    { id: "a-sab-9", name: "Extensão de punho na barra", sets: "4", reps: "8–10" },
+                                ]
+                            },
+                            {
+                                name: "Cardio",
+                                exercises: [
+                                    { id: "a-sab-10", name: "Cardio", sets: "1", reps: "15 minutos" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-a-dom",
+                        day: "Domingo",
+                        date: "Descanso",
+                        muscleGroups: [],
+                        isRestDay: true
+                    }
+                ]
+            },
+            {
+                week: "Semana B (Seg > ÍMPAR)",
+                days: [
+                    {
+                        id: "week-b-seg",
+                        day: "Segunda-Feira",
+                        date: "Série B - Peito e Tríceps",
+                        muscleGroups: [
+                            {
+                                name: "Peito",
+                                exercises: [
+                                    { id: "b-seg-1", name: "Supino reto barra", sets: "4", reps: "8–10" },
+                                    { id: "b-seg-2", name: "Supino inclinado halteres", sets: "4", reps: "8–10" },
+                                    { id: "b-seg-3", name: "Crucifixo reto máquina", sets: "4", reps: "8–10" },
+                                    { id: "b-seg-4", name: "Crucifixo inclinado para cima pulley", sets: "4", reps: "8–10", notes: "última série: 2 Rest" },
+                                ]
+                            },
+                            {
+                                name: "Tríceps",
+                                exercises: [
+                                    { id: "b-seg-5", name: "Tríceps paralela", sets: "4", reps: "8–10" },
+                                    { id: "b-seg-6", name: "Tríceps pulley corda", sets: "4", reps: "8–10" },
+                                    { id: "b-seg-7", name: "Tríceps pulley unilateral", sets: "4", reps: "8–10", notes: "última série: Drop" },
+                                ]
+                            },
+                            {
+                                name: "Cardio",
+                                exercises: [
+                                    { id: "b-seg-8", name: "Cardio", sets: "1", reps: "15 minutos" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-b-ter",
+                        day: "Terça-Feira",
+                        date: "Série A - Costa e Bíceps",
+                        muscleGroups: [
+                            {
+                                name: "Costas",
+                                exercises: [
+                                    { id: "b-ter-1", name: "Puxada pronada articulada", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                    { id: "b-ter-2", name: "Puxada neutra com triângulo", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                    { id: "b-ter-3", name: "Remada curvada pronada", sets: "4", reps: "8–10" },
+                                    { id: "b-ter-4", name: "Remada triângulo", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                ]
+                            },
+                            {
+                                name: "Bíceps",
+                                exercises: [
+                                    { id: "b-ter-5", name: "Rosca Scott W", sets: "4", reps: "8–10", notes: "todas as séries: Rest Pause 10s" },
+                                    { id: "b-ter-6", name: "Rosca martelo", sets: "4", reps: "8–10" },
+                                    { id: "b-ter-7", name: "Extensão de punho na barra", sets: "4", reps: "8–10" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-b-qua",
+                        day: "Quarta-Feira",
+                        date: "Off",
+                        muscleGroups: [],
+                        isRestDay: true
+                    },
+                    {
+                        id: "week-b-qui",
+                        day: "Quinta-Feira",
+                        date: "Série C - Perna completo",
+                        muscleGroups: [
+                            {
+                                name: "Pernas",
+                                exercises: [
+                                    { id: "b-qui-1", name: "Agachamento livre", sets: "4", reps: "8–10" },
+                                    { id: "b-qui-2", name: "Leg 45", sets: "4", reps: "8–10" },
+                                    { id: "b-qui-3", name: "Cadeira extensora", sets: "4", reps: "8–10", notes: "última série: 2 Rest Pause de 10s" },
+                                    { id: "b-qui-4", name: "Afundo Smith", sets: "4", reps: "8–10" },
+                                    { id: "b-qui-5", name: "Mesa flexora", sets: "4", reps: "8–10" },
+                                    { id: "b-qui-6", name: "Stiff barra", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-b-sex",
+                        day: "Sexta-Feira",
+                        date: "Série D - Ombro + Bíceps",
+                        muscleGroups: [
+                            {
+                                name: "Bíceps",
+                                exercises: [
+                                    { id: "b-sex-1", name: "Bíceps Corda Pulley", sets: "3", reps: "8–10" },
+                                    { id: "b-sex-2", name: "Bíceps Rosca Alternada", sets: "3", reps: "8–10" },
+                                ]
+                            },
+                            {
+                                name: "Ombro",
+                                exercises: [
+                                    { id: "b-sex-3", name: "Desenvolvimento sentado rack", sets: "4", reps: "8–10", notes: "última série: Clust Set" },
+                                    { id: "b-sex-4", name: "Desenvolvimento Arnold", sets: "4", reps: "8–10" },
+                                    { id: "b-sex-5", name: "Elevação lateral halteres", sets: "4", reps: "8–10", notes: "última série: 2 Rest Pause de 10s" },
+                                    { id: "b-sex-6", name: "Crucifixo inverso polia", sets: "4", reps: "8–10" },
+                                    { id: "b-sex-7", name: "Encolhimento", sets: "4", reps: "8–10", notes: "se sobrar tempo" },
+                                ]
+                            },
+                            {
+                                name: "Cardio",
+                                exercises: [
+                                    { id: "b-sex-8", name: "Cardio", sets: "1", reps: "15 minutos" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-b-sab",
+                        day: "Sábado",
+                        date: "Série E2 - Peito e Tríceps",
+                        muscleGroups: [
+                            {
+                                name: "Peito",
+                                exercises: [
+                                    { id: "b-sab-1", name: "Supino reto barra", sets: "4", reps: "8–10" },
+                                    { id: "b-sab-2", name: "Supino inclinado halteres", sets: "4", reps: "8–10" },
+                                    { id: "b-sab-3", name: "Crucifixo reto máquina", sets: "4", reps: "8–10" },
+                                    { id: "b-sab-4", name: "Crucifixo inclinado para cima pulley", sets: "4", reps: "8–10", notes: "última série: 2 Rest" },
+                                ]
+                            },
+                            {
+                                name: "Tríceps",
+                                exercises: [
+                                    { id: "b-sab-5", name: "Tríceps paralela", sets: "4", reps: "8–10" },
+                                    { id: "b-sab-6", name: "Tríceps pulley corda", sets: "4", reps: "8–10" },
+                                    { id: "b-sab-7", name: "Tríceps pulley unilateral", sets: "4", reps: "8–10", notes: "última série: Drop" },
+                                ]
+                            },
+                            {
+                                name: "Cardio",
+                                exercises: [
+                                    { id: "b-sab-8", name: "Cardio", sets: "1", reps: "15 minutos" },
+                                ]
+                            }
+                        ],
+                        isRestDay: false
+                    },
+                    {
+                        id: "week-b-dom",
+                        day: "Domingo",
+                        date: "Descanso",
+                        muscleGroups: [],
+                        isRestDay: true
+                    }
+                ]
+            }
+        ];
+
+        let currentWeek = 0;
+        let timers = {};
+
+        // Tema
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            const icon = document.getElementById('themeIcon');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.textContent = '☀️';
+            } else {
+                icon.textContent = '🌙';
+            }
+        }
+
+        function loadTheme() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+            updateThemeIcon();
+        }
+
+        // Renderização
+        function renderWorkout() {
+            const week = workoutPlans[currentWeek];
+            const container = document.getElementById('workoutContainer');
+            container.innerHTML = '';
+
+            week.days.forEach(day => {
+                const daySection = document.createElement('div');
+
+                if (day.isRestDay) {
+                    daySection.innerHTML = `
+                        <div class="day-header">
+                            <div class="day-info">
+                                <h3>${day.day}</h3>
+                                <p>${day.date}</p>
+                            </div>
+                        </div>
+                        <div class="rest-day">
+                            <p>🛌 Dia de Descanso - Recupere bem!</p>
+                        </div>
+                    `;
+                } else {
+                    const dayCompleted = getCompletedCount(day.id);
+                    const dayTotal = day.muscleGroups.reduce((acc, g) => acc + g.exercises.length, 0);
+                    const dayProgress = dayTotal > 0 ? (dayCompleted / dayTotal) * 100 : 0;
+
+                    let exercisesHTML = '';
+                    day.muscleGroups.forEach(group => {
+                        exercisesHTML += `<div class="muscle-group">
+                            <div class="muscle-group-title">${group.name}</div>
+                        `;
+                        group.exercises.forEach(exercise => {
+                            const isCompleted = isExerciseCompleted(day.id, exercise.id);
+                            exercisesHTML += `
+                                <div class="exercise-card ${isCompleted ? 'completed' : ''}">
+                                    <div class="exercise-checkbox ${isCompleted ? 'checked' : ''}" onclick="toggleExercise('${day.id}', '${exercise.id}')">
+                                        ${isCompleted ? '✓' : ''}
+                                    </div>
+                                    <div class="exercise-info">
+                                        <div class="exercise-name">${exercise.name}</div>
+                                        <div class="exercise-details">${exercise.sets} séries × ${exercise.reps}</div>
+                                        ${exercise.notes ? `<div class="exercise-notes">${exercise.notes}</div>` : ''}
+                                    </div>
+                                    <div class="timer-container">
+                                        ${renderTimer(exercise.id)}
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        exercisesHTML += '</div>';
+                    });
+
+                    daySection.innerHTML = `
+                        <div class="day-header">
+                            <div class="day-info">
+                                <h3>${day.day}</h3>
+                                <p>${day.date}</p>
+                            </div>
+                            <div class="day-progress">
+                                <div class="day-progress-bar">
+                                    <div class="day-progress-fill" style="width: ${dayProgress}%"></div>
+                                </div>
+                                <div class="day-progress-text">${dayCompleted}/${dayTotal}</div>
+                            </div>
+                        </div>
+                        ${exercisesHTML}
+                    `;
+                }
+
+                container.appendChild(daySection);
+            });
+        }
+
+        function renderTimer(id) {
+            return `
+                <div class="timer-display">
+                    <svg class="timer-svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--muted-light); opacity: 0.2;"></circle>
+                        <circle class="timer-progress-circle" cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--primary); stroke-dasharray: 0 282.7; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dasharray 0.3s;" data-timer-id="${id}"></circle>
+                    </svg>
+                    <div class="timer-text" data-timer-id="${id}">15:00</div>
+                </div>
+                <div class="timer-controls">
+                    <button class="timer-btn" data-timer-id="${id}" data-action="play" title="Play">▶</button>
+                    <button class="timer-btn" data-timer-id="${id}" data-action="reset" title="Reset">↻</button>
+                </div>
+            `;
+        }
+
+        // Exercícios
+        function toggleExercise(dayId, exerciseId) {
+            let completed = JSON.parse(localStorage.getItem(`workout-${dayId}`) || '[]');
+            const index = completed.indexOf(exerciseId);
+            if (index > -1) {
+                completed.splice(index, 1);
+            } else {
+                completed.push(exerciseId);
+            }
+            localStorage.setItem(`workout-${dayId}`, JSON.stringify(completed));
+            renderWorkout();
+            updateProgress();
+        }
+
+        function isExerciseCompleted(dayId, exerciseId) {
+            const completed = JSON.parse(localStorage.getItem(`workout-${dayId}`) || '[]');
+            return completed.includes(exerciseId);
+        }
+
+        function getCompletedCount(dayId) {
+            const completed = JSON.parse(localStorage.getItem(`workout-${dayId}`) || '[]');
+            return completed.length;
+        }
+
+        // Limpar todos os checkboxes
+        function clearAllCheckboxes() {
+            if (confirm('Tem certeza que deseja limpar todos os checkboxes? Esta ação não pode ser desfeita.')) {
+                const week = workoutPlans[currentWeek];
+                week.days.forEach(day => {
+                    localStorage.removeItem(`workout-${day.id}`);
+                });
+                renderWorkout();
+                updateProgress();
+            }
+        }
+
+        // Timers
+        function playTimer(id) {
+            if (!timers[id]) {
+                timers[id] = {
+                    isRunning: false,
+                    timeLeft: 900,
+                    totalTime: 900,
+                    interval: null
+                };
+            }
+
+            if (timers[id].isRunning) return;
+            timers[id].isRunning = true;
+
+            timers[id].interval = setInterval(() => {
+                timers[id].timeLeft--;
+                updateTimerDisplay(id);
+
+                if (timers[id].timeLeft <= 0) {
+                    clearInterval(timers[id].interval);
+                    timers[id].isRunning = false;
+                }
+            }, 1000);
+
+            updateTimerButton(id);
+        }
+
+        function pauseTimer(id) {
+            if (timers[id] && timers[id].interval) {
+                clearInterval(timers[id].interval);
+                timers[id].isRunning = false;
+                updateTimerButton(id);
+            }
+        }
+
+        function resetTimer(id) {
+            if (timers[id]) {
+                clearInterval(timers[id].interval);
+                timers[id].isRunning = false;
+                timers[id].timeLeft = 900;
+                updateTimerDisplay(id);
+                updateTimerButton(id);
+            }
+        }
+
+        function updateTimerDisplay(id) {
+            const timer = timers[id];
+            const minutes = Math.floor(timer.timeLeft / 60);
+            const seconds = timer.timeLeft % 60;
+            const timeStr = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            document.querySelectorAll(`[data-timer-id="${id}"]`).forEach(el => {
+                if (el.classList.contains('timer-text')) {
+                    el.textContent = timeStr;
+                } else if (el.classList.contains('timer-progress-circle')) {
+                    const progress = ((timer.totalTime - timer.timeLeft) / timer.totalTime) * 282.7;
+                    el.style.strokeDasharray = `${progress} 282.7`;
+                }
+            });
+        }
+
+        function updateTimerButton(id) {
+            const btn = document.querySelector(`[data-timer-id="${id}"][data-action="play"]`);
+            if (btn) {
+                if (timers[id].isRunning) {
+                    btn.textContent = '⏸';
+                    btn.dataset.action = 'pause';
+                    btn.classList.add('playing');
+                } else {
+                    btn.textContent = '▶';
+                    btn.dataset.action = 'play';
+                    btn.classList.remove('playing');
+                }
+            }
+        }
+
+        // Progresso
+        function updateProgress() {
+            const week = workoutPlans[currentWeek];
+            let totalExercises = 0;
+            let totalCompleted = 0;
+
+            week.days.forEach(day => {
+                if (!day.isRestDay) {
+                    const dayTotal = day.muscleGroups.reduce((acc, g) => acc + g.exercises.length, 0);
+                    const dayCompleted = getCompletedCount(day.id);
+                    totalExercises += dayTotal;
+                    totalCompleted += dayCompleted;
+                }
+            });
+
+            const progress = totalExercises > 0 ? (totalCompleted / totalExercises) * 100 : 0;
+            document.getElementById('overallProgress').textContent = Math.round(progress) + '%';
+            document.getElementById('overallProgressBar').style.width = progress + '%';
+        }
+
+        function loadProgress() {
+            updateProgress();
+        }
+
+        // Event listeners
+        function setupEventListeners() {
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('clearAllBtn').addEventListener('click', clearAllCheckboxes);
+
+            document.querySelectorAll('.week-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentWeek = parseInt(this.dataset.week);
+                    renderWorkout();
+                    updateProgress();
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('timer-btn')) {
+                    const id = e.target.dataset.timerId;
+                    const action = e.target.dataset.action;
+                    if (action === 'play') {
+                        playTimer(id);
+                    } else if (action === 'pause') {
+                        pauseTimer(id);
+                    } else if (action === 'reset') {
+                        resetTimer(id);
+                    }
+                }
+            });
+        }
+
+        function init() {
+            loadTheme();
+            renderWorkout();
+            loadProgress();
+            setupEventListeners();
+        }
+
+        // Iniciar
+        init();
+    </script>
 </body>
 </html>
