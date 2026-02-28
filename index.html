@@ -65,7 +65,7 @@
         }
 
         .header-title h1 {
-            font-size: 1.125rem;
+            font-size: 2.25rem;
             font-weight: bold;
             color: var(--primary);
             margin-bottom: 0.25rem;
@@ -522,6 +522,195 @@
             display: none;
         }
 
+        /* Navegação principal entre abas */
+        .main-tabs {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 0;
+        }
+
+        body.dark-mode .main-tabs {
+            border-bottom-color: var(--border-dark);
+        }
+
+        .main-tab-btn {
+            padding: 0.65rem 1.5rem;
+            border: none;
+            background: none;
+            color: var(--muted-light);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+            border-radius: 0.375rem 0.375rem 0 0;
+        }
+
+        body.dark-mode .main-tab-btn {
+            color: var(--muted-dark);
+        }
+
+        .main-tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        body.dark-mode .main-tab-btn.active {
+            background-color: rgba(37, 99, 235, 0.15);
+        }
+
+        .main-tab-btn:hover:not(.active) {
+            color: var(--text-light);
+            background-color: var(--card-light);
+        }
+
+        body.dark-mode .main-tab-btn:hover:not(.active) {
+            color: var(--text-dark);
+            background-color: var(--card-dark);
+        }
+
+        /* Seção de dieta */
+        .diet-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .meal-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-light);
+            border-radius: 0.75rem;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+
+        body.dark-mode .meal-card {
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+        }
+
+        .meal-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.85rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .meal-header h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .meal-header span {
+            font-size: 0.8rem;
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        .meal-options {
+            display: flex;
+            gap: 0;
+        }
+
+        .meal-option {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            border-right: 1px solid var(--border-light);
+        }
+
+        body.dark-mode .meal-option {
+            border-right-color: var(--border-dark);
+        }
+
+        .meal-option:last-child {
+            border-right: none;
+        }
+
+        .meal-option-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px dashed var(--border-light);
+        }
+
+        body.dark-mode .meal-option-label {
+            border-bottom-color: var(--border-dark);
+        }
+
+        .meal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            gap: 0.5rem;
+        }
+
+        body.dark-mode .meal-item {
+            border-bottom-color: rgba(255,255,255,0.04);
+        }
+
+        .meal-item:last-child {
+            border-bottom: none;
+        }
+
+        .meal-item-name {
+            font-size: 0.825rem;
+            font-weight: 500;
+            color: var(--text-light);
+            flex: 1;
+        }
+
+        body.dark-mode .meal-item-name {
+            color: var(--text-dark);
+        }
+
+        .meal-item-qty {
+            font-size: 0.775rem;
+            color: var(--muted-light);
+            white-space: nowrap;
+            font-weight: 400;
+        }
+
+        body.dark-mode .meal-item-qty {
+            color: var(--muted-dark);
+        }
+
+        @media (max-width: 600px) {
+            .meal-options {
+                flex-direction: column;
+            }
+
+            .meal-option {
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            body.dark-mode .meal-option {
+                border-bottom-color: var(--border-dark);
+            }
+
+            .meal-option:last-child {
+                border-bottom: none;
+            }
+
+            .main-tab-btn {
+                padding: 0.55rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
         .clear-all-btn {
             padding: 0.75rem 1.5rem;
             background-color: var(--primary);
@@ -562,7 +751,7 @@
             }
 
             .header-title h1 {
-                font-size: 1.125rem;
+                font-size: 1.5rem;
             }
 
             .header-controls {
@@ -632,7 +821,7 @@
             }
 
             .header-title h1 {
-                font-size: 1.125rem;
+                font-size: 1.875rem;
             }
 
             .header-title p {
@@ -716,7 +905,7 @@
             }
 
             .header-title h1 {
-                font-size: 1.125rem;
+                font-size: 1.875rem;
             }
 
             .week-btn {
@@ -757,37 +946,156 @@
     </header>
 
     <main>
-        <div class="week-selector">
-            <button class="week-btn active" data-week="0">Semana A</button>
-            <button class="week-btn" data-week="1">Semana B</button>
+        <!-- Abas principais -->
+        <div class="main-tabs">
+            <button class="main-tab-btn active" data-tab="treinos">🏋️ Semanas</button>
+            <button class="main-tab-btn" data-tab="dieta">🥗 Dieta</button>
         </div>
 
-        <div class="progress-card">
-            <div class="progress-header">
-                <h2>Progresso da Semana</h2>
-                <span id="overallProgress">0%</span>
+        <!-- Conteúdo: Treinos -->
+        <div id="tab-treinos">
+            <div class="week-selector">
+                <button class="week-btn active" data-week="0">Semana A</button>
+                <button class="week-btn" data-week="1">Semana B</button>
             </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="overallProgressBar" style="width: 0%"></div>
+
+            <div class="progress-card">
+                <div class="progress-header">
+                    <h2>Progresso da Semana</h2>
+                    <span id="overallProgress">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="overallProgressBar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <button class="clear-all-btn" id="clearAllBtn" title="Limpar todos os checkboxes">
+                🗑️ Limpar Todos
+            </button>
+
+            <div id="workoutContainer"></div>
+
+            <div class="tips-card">
+                <h3>💡 Dicas</h3>
+                <ul>
+                    <li>✓ Clique no círculo para marcar exercício como concluído</li>
+                    <li>✓ Use o cronômetro de 15min para controlar o tempo</li>
+                    <li>✓ Seu progresso é salvo automaticamente</li>
+                    <li>✓ Alterne entre modo claro e escuro conforme necessário</li>
+                    <li>✓ Clique em "Limpar Todos" para resetar todos os checkboxes</li>
+                    <li>✓ Todos os exercícios estão visíveis para fácil acesso</li>
+                </ul>
             </div>
         </div>
 
-        <button class="clear-all-btn" id="clearAllBtn" title="Limpar todos os checkboxes">
-            🗑️ Limpar Todos
-        </button>
+        <!-- Conteúdo: Dieta -->
+        <div id="tab-dieta" class="hidden">
+            <div class="diet-section">
 
-        <div id="workoutContainer"></div>
+                <!-- Refeição 01 -->
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <h3>🍳 Refeição 01</h3>
+                        <span>06:30 A.M</span>
+                    </div>
+                    <div class="meal-options">
+                        <div class="meal-option">
+                            <div class="meal-option-label">Opção 1</div>
+                            <div class="meal-item"><span class="meal-item-name">Pão integral</span><span class="meal-item-qty">2 fatias + manteiga</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Ovos</span><span class="meal-item-qty">2 unidades</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Banana</span><span class="meal-item-qty">1 unidade</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Pasta de amendoim</span><span class="meal-item-qty">1 colher</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Leite integral</span><span class="meal-item-qty">150 ml</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Chocolate 70%</span><span class="meal-item-qty">2 quadrados</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty">8 g</span></div>
+                        </div>
+                        <div class="meal-option">
+                            <div class="meal-option-label">Opção 2</div>
+                            <div class="meal-item"><span class="meal-item-name">Whey protein + leite integral</span><span class="meal-item-qty">—</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Torrada integral</span><span class="meal-item-qty">2 unidades</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Pasta de amendoim</span><span class="meal-item-qty">1 colher</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Banana</span><span class="meal-item-qty">1 unidade</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Chocolate 70%</span><span class="meal-item-qty">2 quadrados</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Creatina</span><span class="meal-item-qty">8 g</span></div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="tips-card">
-            <h3>💡 Dicas</h3>
-            <ul>
-                <li>✓ Clique no círculo para marcar exercício como concluído</li>
-                <li>✓ Use o cronômetro de 15min para controlar o tempo</li>
-                <li>✓ Seu progresso é salvo automaticamente</li>
-                <li>✓ Alterne entre modo claro e escuro conforme necessário</li>
-                <li>✓ Clique em "Limpar Todos" para resetar todos os checkboxes</li>
-                <li>✓ Todos os exercícios estão visíveis para fácil acesso</li>
-            </ul>
+                <!-- Refeição 02 -->
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <h3>🍽️ Refeição 02</h3>
+                        <span>12:30 P.M</span>
+                    </div>
+                    <div class="meal-options">
+                        <div class="meal-option">
+                            <div class="meal-option-label">Opção 1</div>
+                            <div class="meal-item"><span class="meal-item-name">Arroz cozido</span><span class="meal-item-qty">300 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Peito de frango</span><span class="meal-item-qty">180 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Batata doce cozida</span><span class="meal-item-qty">100 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Ovo cozido</span><span class="meal-item-qty">1 unidade</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Fruta</span><span class="meal-item-qty">—</span></div>
+                        </div>
+                        <div class="meal-option">
+                            <div class="meal-option-label">Opção 2</div>
+                            <div class="meal-item"><span class="meal-item-name">Arroz branco</span><span class="meal-item-qty">300 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Peito de frango</span><span class="meal-item-qty">180 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Ovo cozido</span><span class="meal-item-qty">1 unidade</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Fruta</span><span class="meal-item-qty">—</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refeição 03 -->
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <h3>🥤 Refeição 03</h3>
+                        <span>16:00 P.M</span>
+                    </div>
+                    <div class="meal-options">
+                        <div class="meal-option">
+                            <div class="meal-option-label">Opção 1</div>
+                            <div class="meal-item"><span class="meal-item-name">Whey protein</span><span class="meal-item-qty">1 scoop c/ água</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Pão integral</span><span class="meal-item-qty">2 fatias</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Banana média</span><span class="meal-item-qty">1 unidade</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Barra de chocolate</span><span class="meal-item-qty">1 unidade</span></div>
+                        </div>
+                        <div class="meal-option">
+                            <div class="meal-option-label">Opção 2</div>
+                            <div class="meal-item"><span class="meal-item-name">Iogurte grego integral</span><span class="meal-item-qty">1 pote</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Granola</span><span class="meal-item-qty">3 colheres de sopa</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Banana média</span><span class="meal-item-qty">1 unidade</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Pasta de amendoim</span><span class="meal-item-qty">1 colher de sopa</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Whey protein</span><span class="meal-item-qty">1 scoop</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refeição 04 -->
+                <div class="meal-card">
+                    <div class="meal-header">
+                        <h3>🍝 Refeição 04</h3>
+                        <span>21:00 P.M</span>
+                    </div>
+                    <div class="meal-options">
+                        <div class="meal-option">
+                            <div class="meal-option-label">Opção 1</div>
+                            <div class="meal-item"><span class="meal-item-name">Macarrão alho e óleo</span><span class="meal-item-qty">550 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Carne de boi acebolada</span><span class="meal-item-qty">180 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Ovo cozido</span><span class="meal-item-qty">1 unidade</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Chocolate amargo</span><span class="meal-item-qty">—</span></div>
+                        </div>
+                        <div class="meal-option">
+                            <div class="meal-option-label">Opção 2</div>
+                            <div class="meal-item"><span class="meal-item-name">Macarrão alho e óleo</span><span class="meal-item-qty">450 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Carne de boi acebolada</span><span class="meal-item-qty">180 g</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Omelete</span><span class="meal-item-qty">4 ovos inteiros</span></div>
+                            <div class="meal-item"><span class="meal-item-name">Banana c/ pasta de amendoim e chocolate</span><span class="meal-item-qty">1 pequena completa</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </main>
 
@@ -1368,10 +1676,26 @@
             updateProgress();
         }
 
+        // Controle das abas principais
+        function switchMainTab(tabName) {
+            document.querySelectorAll('.main-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.main-tab-btn[data-tab="${tabName}"]`).classList.add('active');
+
+            document.getElementById('tab-treinos').classList.toggle('hidden', tabName !== 'treinos');
+            document.getElementById('tab-dieta').classList.toggle('hidden', tabName !== 'dieta');
+        }
+
         // Event listeners
         function setupEventListeners() {
             document.getElementById('themeToggle').addEventListener('click', toggleTheme);
             document.getElementById('clearAllBtn').addEventListener('click', clearAllCheckboxes);
+
+            // Abas principais
+            document.querySelectorAll('.main-tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    switchMainTab(this.dataset.tab);
+                });
+            });
 
             document.querySelectorAll('.week-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -1384,9 +1708,11 @@
             });
 
             document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('timer-btn')) {
-                    const id = e.target.dataset.timerId;
-                    const action = e.target.dataset.action;
+                if (e.target && e.target.classList.contains('timer-btn')) {
+                    const btn = e.target;
+                    const id = btn.dataset.timerId;
+                    const action = btn.dataset.action;
+                    
                     if (action === 'play') {
                         playTimer(id);
                     } else if (action === 'pause') {
