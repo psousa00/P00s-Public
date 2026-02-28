@@ -950,6 +950,7 @@
         <div class="main-tabs">
             <button class="main-tab-btn active" data-tab="treinos">🏋️ Semanas</button>
             <button class="main-tab-btn" data-tab="dieta">🥗 Dieta</button>
+            <button class="main-tab-btn" data-tab="compras">🛒 Compras</button>
         </div>
 
         <!-- Conteúdo: Treinos -->
@@ -1095,6 +1096,72 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- Conteúdo: Lista de Compras -->
+        <div id="tab-compras" class="hidden">
+            <div class="shopping-section">
+                <div class="shopping-intro">
+                    <p>🗓️ Melhor comprar mensalmente (não estraga rápido)</p>
+                </div>
+
+                <!-- Seção Mensal -->
+                <div class="shopping-category">
+                    <h3 class="shopping-category-title">📦 Itens Mensais</h3>
+                    <div class="shopping-list">
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="arroz"><span>Arroz branco ou integral</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="macarrao"><span>Macarrão</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="granola"><span>Granola</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="creatina"><span>Creatina</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="whey"><span>Whey protein</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="azeite"><span>Azeite de oliva</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="amendoim"><span>Pasta de amendoim</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="chocolate"><span>Chocolate 70% cacau</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="sal"><span>Sal</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="temperos"><span>Temperos secos (páprica, pimenta, orégano, alho em pó etc.)</span></div>
+                    </div>
+                </div>
+
+                <div class="shopping-intro" style="margin-top: 1.5rem;">
+                    <p>🗓️ Melhor comprar semanalmente</p>
+                </div>
+
+                <!-- Seção Semanal -->
+                <div class="shopping-category">
+                    <h3 class="shopping-category-title">📦 Itens Semanais</h3>
+                    <div class="shopping-list">
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="ovos"><span>Ovos</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="frango"><span>Peito de frango</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="carne"><span>Carne vermelha (patinho, coxão mole etc.)</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="batata-doce"><span>Batata doce</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="pao-integral"><span>Pão integral (pode congelar parte)</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="torrada"><span>Torrada integral</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="iogurte"><span>Iogurte grego integral</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="leite"><span>Leite integral</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="cebola"><span>Cebola</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="alho"><span>Alho</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="cenoura"><span>Cenoura</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="abobrinha"><span>Abobrinha</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="brocolos"><span>Brócolis</span></div>
+                    </div>
+                </div>
+
+                <div class="shopping-intro" style="margin-top: 1.5rem;">
+                    <p>🗓️ Melhor comprar 2x por semana (ou fracionado)</p>
+                </div>
+
+                <!-- Seção Fracionado -->
+                <div class="shopping-category">
+                    <h3 class="shopping-category-title">📦 Itens Fracionados (2x/semana)</h3>
+                    <div class="shopping-list">
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="banana"><span>Banana</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="maca"><span>Maçã (ou outra fruta da sua preferência)</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="mamao"><span>Mamão ou abacaxi (opcional para variar)</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="folhas"><span>Folhas (alface, rúcula etc.)</span></div>
+                        <div class="shopping-item"><input type="checkbox" class="shopping-checkbox" data-item="tomate"><span>Tomate</span></div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -1683,6 +1750,20 @@
 
             document.getElementById('tab-treinos').classList.toggle('hidden', tabName !== 'treinos');
             document.getElementById('tab-dieta').classList.toggle('hidden', tabName !== 'dieta');
+            document.getElementById('tab-compras').classList.toggle('hidden', tabName !== 'compras');
+        }
+
+        // Controle de Lista de Compras
+        function setupShoppingListeners() {
+            document.querySelectorAll('.shopping-checkbox').forEach(checkbox => {
+                const item = checkbox.dataset.item;
+                const isChecked = localStorage.getItem(`shopping-${item}`) === 'true';
+                checkbox.checked = isChecked;
+                
+                checkbox.addEventListener('change', function() {
+                    localStorage.setItem(`shopping-${item}`, this.checked);
+                });
+            });
         }
 
         // Event listeners
@@ -1729,6 +1810,7 @@
             renderWorkout();
             loadProgress();
             setupEventListeners();
+            setupShoppingListeners();
         }
 
         // Iniciar
